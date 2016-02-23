@@ -1,13 +1,28 @@
-var databaseUrl = 'sample-blog' // "username:password@example.com/mydb"
-var collections = ['posts', 'users']
+// const databaseUrl = 'rezruss-dev' // "username:password@example.com/mydb"
+// const collections = ['products', 'users']
+//
+// const db = require("mongojs")(databaseUrl, collections)
+//
+// db.on('connect', () => {
+//     console.warn('database connected')
+// })
+//
+// db.on('error', err => {
+//     console.warn('database error', err)
+// })
+//
+// module.exports = db
 
-var db = require("mongojs").connect(databaseUrl, collections)
+const mongoose = require('mongoose')
+mongoose.connect('mongodb://localhost/rezruss-dev')
 
-db.on('connect', function() {
+const db = mongoose.connection
+
+db.once('open', () => {
     console.warn('database connected')
 })
 
-db.on('error', function(err) {
+db.on('error', err => {
     console.warn('database error', err)
 })
 

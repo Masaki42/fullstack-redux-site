@@ -1,13 +1,16 @@
-var express = require('express')
-var bodyParser = require('body-parser')
-var app = express()
-var db = require('./db.js')
+require('babel-register')({ presets: ['es2015'] })
 
+const express = require('express')
+const bodyParser = require('body-parser')
+const morgan = require('morgan')
+const app = express()
+
+app.use(morgan('dev'))
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extend: true }))
+app.use(bodyParser.urlencoded({ extended: true }))
 
-var routes = require('./routes.js')(app, db)
+const routes = require('./routes.js')(app)
 
-var server = app.listen(3000, function() {
+const server = app.listen(3000, function() {
     console.log('Listening on the port %s...', server.address().port)
 })
