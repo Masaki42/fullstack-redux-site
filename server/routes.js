@@ -1,12 +1,12 @@
-const productsController = require('./controllers/products')
+const ProductsCollection = require('./collections/products')
 
-// show, index, new, create, update, destroy
+// show, index, create, update, destroy
 const apiRouter = app => {
-    app.get('/api/products', productsController.index)
-    app.get('/api/products/:id', productsController.show)
-    app.post('/api/products', productsController.create)
-    app.put('/api/products/:id', productsController.update)
-    app.delete('/api/products/:id', productsController.destroy)
+    app.get('/api/products', ProductsCollection.index)
+    app.get('/api/products/:id', ProductsCollection.show)
+    app.post('/api/products', ProductsCollection.create)
+    app.put('/api/products/:id', ProductsCollection.update)
+    app.delete('/api/products/:id', ProductsCollection.destroy)
 }
 
 module.exports = apiRouter

@@ -1,0 +1,6 @@
+{
+    "db": {
+        "url": "mongodb://localhost/rezruss-dev"
+    },
+    "port": 3000
+}
