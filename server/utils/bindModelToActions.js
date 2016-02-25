@@ -1,22 +1,4 @@
-const db = require('../db.js')
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
-
-const ProductSchema = new Schema({
-    title: {
-        type: String,
-        required: true
-    },
-    description: String,
-    createAt: {
-        type: Date, default: Date.now
-    },
-    updatedAt: Date
-})
-
-const Product = mongoose.model('Product', ProductSchema)
-
-const generateController = Model => ({
+const bindModelToActions = Model => ({
     index(req, res) {
         return Model.find((err, docs) => {
             if (err) {
@@ -102,7 +84,4 @@ const generateController = Model => ({
     }
 })
 
-const ProductsCollection = generateController(Product)
-
-
-module.exports = ProductsCollection
+module.exports = bindModelToActions
