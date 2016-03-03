@@ -1,3 +1,3 @@
-exports.Category = require('./categories')
-exports.Product = require('./products')
-exports.Type = require('./types')
+exports.categories = require('./categories')
+exports.products = require('./products')
+exports.types = require('./types')
